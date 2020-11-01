@@ -1,0 +1,41 @@
+version: '3.5'  
+
+services: 
+    backend: 
+      build: ../utils/backend-example-docker
+      ports: 
+        - 8000:8000
+      environment:
+        - FRONT_URL=http://colasloth.com/
+        - DB_USERNAME=example
+        - DB_PASSWORD=example
+        - DB_NAME=database
+        - DB_HOST=db
+        - REDIS=cache
+    db:
+      image: postgres
+      restart: always
+      environment:
+        - POSTGRES_USER=example
+        - POSTGRES_PASSWORD=example
+        - POSTGRES_DB=database
+      volumes:
+        - ./database:/var/lib/postgresql/data
+    cache:
+      image: redis
+      volumes: 
+        - ./cache:/data
+
+    frontend: 
+      build: ../utils/frontend-example-docker
+      ports: 
+        - 5000:5000
+      environment:
+        - API_URL=http://colasloth.com/api/
+ 
+    web:
+      image: nginx
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf
+      ports:
+        - "80:80"
