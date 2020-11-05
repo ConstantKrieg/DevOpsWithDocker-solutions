@@ -340,4 +340,4 @@ So the size went down from 855MB to 55.6MB
 
 
 ## 3.8
-![kubernetes_diagram](https://github.com/ConstantKrieg/DevOpsWithDocker-solutions/Part3/3.8/kubernetes.PNG)
+![kubernetes_diagram](https://github.com/ConstantKrieg/DevOpsWithDocker-solutions/blob/master/Part3/3.8/kubernetes.PNG?raw=true)
